@@ -94,4 +94,4 @@ I can wholeheartedly und unreservedly recommend them all!
 
 ---
 [Bill Mair](https://github.com/red-lichtie)
-[Original document](https://github.com/red-lichtie/homelab-cluster/README.md)
+[Original document](https://github.com/red-lichtie/homelab-cluster/)
