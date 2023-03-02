@@ -6,8 +6,8 @@ The goal of this project is to learn Kubernetes and at the end of the day, to ha
 mini cluster for SoHo tasks. So the result is not so much directed to a 'Home Lab' but more in the
 direction of 'Self Hosting', a blurry line to be sure. But you don't really need HA for a home lab.
 
-Let me get one thing out if the way first: I am only providing this information as a **guide**, you it at your own risk.
-I am not responsible for anything that happens to you, your property an especially your data.
+Let me get one thing out if the way first: I am only providing this information as a **guide**, use it at your own risk.
+I am not responsible for anything that happens to you, your property and especially your data.
 
 I personally run quite a few services at home:
 
