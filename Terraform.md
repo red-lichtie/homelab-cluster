@@ -92,7 +92,7 @@ proxmox_api_token_secret = "857c73fe-2962-4242-8daa-dc3c485e4e14"
 I use [Ubuntu Cloud Images](https://cloud-images.ubuntu.com/) to provision the Kubernetes nodes. The current
 latest is [ubuntu-22.10-minimal-cloudimg-amd64.img](https://cloud-images.ubuntu.com/minimal/releases/kinetic/release-20230112/ubuntu-22.10-minimal-cloudimg-amd64.img).
 
-Logon to one of the VMs
+Logon to one of the Proxmox servers to create a template.
 ```shell
 # Work in a sub directory
 mkdir cloud
@@ -331,3 +331,6 @@ Apply complete! Resources: 6 added, 0 changed, 0 destroyed.   # All are complete
 ```
 
 The VMs will be created on the machine where the cloud image exists, it will then be migrated to the target server.
+
+The Datacenter summary will now show 6 virtual machines running and a template:
+![VMs are running](images/VMs-are-running.png "VMs are running")
