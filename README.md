@@ -1,6 +1,6 @@
 # Setting up a high availability SoHo cluster
 
-*Very much work in progress, but release early and release often . . .*
+***Very much work in progress, but release early and release often . . .***
 
 The goal of this project is to learn Kubernetes and at the end of the day, to have a high availability
 mini cluster for SoHo tasks. So the result is not so much directed to a 'Home Lab' but more in the
@@ -11,41 +11,17 @@ I am not responsible for anything that happens to you, your property and especia
 
 I personally run quite a few services at home:
 
-* Personal information management
-  * [Syncthing](https://syncthing.net/) (File synchronisation)
-  * [Radicale](https://radicale.org/) (Calendars, to-do lists and contacts)
-  * [Joplin](https://joplinapp.org/) (Notes)
-  * [BitWarden](https://bitwarden.com/) (Passwords)
-  * [MediaWiki](https://www.mediawiki.org/) (Structured information)
-  * [diagrams.net](https://www.diagrams.net/) (Diagrams)
-* Home Automation
-  * [Home Assistant](https://www.home-assistant.io/)
-  * [Node-RED](https://nodered.org/)
-  * [Zigbee2MQTT](https://www.zigbee2mqtt.io/)
-  * [zWaveJS UI](https://zwave-js.github.io/zwave-js-ui/#/)
-* Programming
-  * [gitea](https://gitea.io/)
-  * [Code-Server](https://github.com/coder/code-server)
-  * [File Browser](https://filebrowser.org/)
+* Personal information management and Home Automation
+  * [3rd party applications](Applications.md)
 * Infrastructure
-  * [Postgres Operator](https://github.com/CrunchyData/postgres-operator) (Crunchy Data)
-    * [PostgreSQL](https://www.postgresql.org/)
-    * [pgAdmin](https://www.pgadmin.org/)
-  * [MariaDB](https://mariadb.org/)
-    * [phpMyAdmin](https://www.phpmyadmin.net/)
-  * [RabbitMQ Cluster Operator](https://www.rabbitmq.com/kubernetes/operator/operator-overview.html)
-    * [RabbitMQ](https://www.rabbitmq.com/)
-  * [Redis Operator](https://docs.redis.com/latest/kubernetes/architecture/operator/)
-    * [Redis](https://docs.redis.com/latest/)
+  * [Databases, Connectivity, etc.](Infrastructure.md)
 * Monitoring
-  * [Prometheus Operator](https://prometheus-operator.dev/)
-  * [Prometheus](https://prometheus.io/)
-    * [Node Exporter](https://github.com/prometheus/node_exporter)
-  * [Grafana](https://grafana.com/grafana/)
-    * [Promtail](https://grafana.com/docs/loki/latest/clients/promtail/)
-  * [Grafana Loki](https://grafana.com/oss/loki/)
+  * [Cluster metrics and application traces](Monitoring.md)
+* Development
+  * [Image Registry, CI/CD](Development.md)
 
-So I can't have any of the being offline or unavailable. The result is basically a private cloud server
+So I can't afford to have any of them being offline or unavailable. The result is basically a self-hosted private cloud
+server.
 
 ![Cluster image](images/cluster.png "The cluster")
 
@@ -70,11 +46,14 @@ installing the infrastructure.
 2) [Git Server](Gitea.md) (LXC)
 3) [Creating the virtual machines for the Kubernetes nodes](Terraform.md) (Terrform)
 4) [Installing Kubernetes](Kubernetes-Ansible.md) (Ansible)
-5) [Bootstrapping the configuration](Flux.md) (Flux CD)
-6) [Ingress](Traefik.md) (Traefik)
-7) [Cluster storage](Rook.md) (Rook)
-8) [Cluster monitoring](Monitoring.md) (Prometheus, Loki and Grafana)
-9) [Infrastructure](Infrastructure.md)
+5) [Bootstrapping the configuration](Flux.md) (Flux CD, Mozilla SOPS)
+6) [Cluster services](Services.md) (Cert-Manager, admission controller)
+7) [Ingress](Traefik.md) (Traefik)
+8) [Cluster storage](Rook.md) (Rook)
+9) [Cluster monitoring](Monitoring.md) (Prometheus, Loki and Grafana)
+10) [Infrastructure](Infrastructure.md) (Databases, Connectivity, etc.)
+11) [Applications](Applications.md) (3rd party applications)
+12) [Development](Development.md) (Harbor, Drone, etc.)
 
 Inspiration and references:
 
