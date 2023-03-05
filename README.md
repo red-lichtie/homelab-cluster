@@ -12,12 +12,12 @@ I am not responsible for anything that happens to you, your property and especia
 I personally run quite a few services at home:
 
 * Personal information management
-  * [Syncthing](https://syncthing.net/) (Files)
+  * [Syncthing](https://syncthing.net/) (File synchronisation)
   * [Radicale](https://radicale.org/) (Calendars, to-do lists and contacts)
   * [Joplin](https://joplinapp.org/) (Notes)
   * [BitWarden](https://bitwarden.com/) (Passwords)
-  * [MediaWiki](https://www.mediawiki.org/)
-  * [diagrams.net](https://www.diagrams.net/)
+  * [MediaWiki](https://www.mediawiki.org/) (Structured information)
+  * [diagrams.net](https://www.diagrams.net/) (Diagrams)
 * Home Automation
   * [Home Assistant](https://www.home-assistant.io/)
   * [Node-RED](https://nodered.org/)
@@ -28,14 +28,21 @@ I personally run quite a few services at home:
   * [Code-Server](https://github.com/coder/code-server)
   * [File Browser](https://filebrowser.org/)
 * Infrastructure
-  * [PostgreSQL](https://www.postgresql.org/)
+  * [Postgres Operator](https://github.com/CrunchyData/postgres-operator) (Crunchy Data)
+    * [PostgreSQL](https://www.postgresql.org/)
     * [pgAdmin](https://www.pgadmin.org/)
   * [MariaDB](https://mariadb.org/)
     * [phpMyAdmin](https://www.phpmyadmin.net/)
-  * [RabbitMQ](https://www.rabbitmq.com/)
+  * [RabbitMQ Cluster Operator](https://www.rabbitmq.com/kubernetes/operator/operator-overview.html)
+    * [RabbitMQ](https://www.rabbitmq.com/)
+  * [Redis Operator](https://docs.redis.com/latest/kubernetes/architecture/operator/)
+    * [Redis](https://docs.redis.com/latest/)
 * Monitoring
+  * [Prometheus Operator](https://prometheus-operator.dev/)
   * [Prometheus](https://prometheus.io/)
+    * [Node Exporter](https://github.com/prometheus/node_exporter)
   * [Grafana](https://grafana.com/grafana/)
+    * [Promtail](https://grafana.com/docs/loki/latest/clients/promtail/)
   * [Grafana Loki](https://grafana.com/oss/loki/)
 
 So I can't have any of the being offline or unavailable. The result is basically a private cloud server
