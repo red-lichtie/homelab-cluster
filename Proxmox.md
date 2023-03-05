@@ -71,12 +71,32 @@ Ceph isn't installed by default, so install Ceph, select `Datacenter` --> `Ceph`
 Install it and configure it as described in the "[Deploy Hyper-Converged Ceph Cluster](https://pve.proxmox.com/pve-docs/chapter-pveceph.html)"
 documentation.
 
-### Specify storage network
-
 Part of the Ceph installation shows the `Configuration` tab, in the `Cluster Network IP/CIDR` field you can configure
 Ceph to use the network on the second adapter.
 
 ![Install Ceph](images/gui-node-ceph-install-wizard-step2.png "Install Ceph")
+
+### Configuring Ceph
+
+I start a monitor and manager on each node (`Ceph` --> `Monitor`):
+
+![Monitors and Managers](images/ceph-monitors.png "Monitors and Managers")
+
+The storage devices on each node have to be added (`Ceph` --> `OSD`):
+
+![OSD](images/ceph-osd-devices.png "OSD")
+
+Create a shared `CephFS` filesystem and start a `Metadata Server` on each node (`Ceph` --> `CephFS`):
+
+![CephFS](images/ceph-cephfs.png "CephFS")
+
+Create a shared `Block Storage` Device, I called mine `cephblockdevice`  (`Ceph` --> `Pools`):
+
+![Storage pools](images/ceph-pools.png "Storage pools")
+
+You should now see the shared resources in the Datacenter panel:
+
+![Storage volumes](images/ceph-volumes.png "Storage volumes")
 
 ### Enable RADOS Gateway (S3 support)
 
