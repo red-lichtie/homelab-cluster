@@ -60,13 +60,14 @@ With the various pieces of the hardware in place and bootable, time to get the s
 installing the infrastructure.
 
 1) [Proxmox VE](Proxmox.md)
-2) [Git Server](Gitea.md)
-3) [Creating the virtual machines for the Kubernetes nodes](Terraform.md)
-4) [Installing Kubernetes](Kubernetes-Ansible.md)
-5) [Bootstrapping the configuration](Flux.md)
-6) [Cluster storage](Rook.md)
-7) [Cluster monitoring](Monitoring.md)
-8) [Infrastructure](Infrastructure.md)
+2) [Git Server](Gitea.md) (LXC)
+3) [Creating the virtual machines for the Kubernetes nodes](Terraform.md) (Terrform)
+4) [Installing Kubernetes](Kubernetes-Ansible.md) (Ansible)
+5) [Bootstrapping the configuration](Flux.md) (Flux CD)
+6) [Ingress](Traefik.md) (Traefik)
+7) [Cluster storage](Rook.md) (Rook)
+8) [Cluster monitoring](Monitoring.md) (Prometheus, Loki and Grafana)
+9) [Infrastructure](Infrastructure.md)
 
 Inspiration and references:
 
