@@ -61,7 +61,7 @@ installing the infrastructure.
 
 1) [Proxmox VE](Proxmox.md)
 2) [Git Server](Gitea.md)
-3) [Creating the nodes](Terraform.md)
+3) [Creating the virtual machines for the Kubernetes nodes](Terraform.md)
 4) [Installing Kubernetes](Kubernetes-Ansible.md)
 5) [Bootstrapping the configuration](Flux.md)
 6) [Cluster storage](Rook.md)
@@ -83,14 +83,18 @@ All of these creators are an absolute wealth of knowledge and gave me a ton of i
   * [Kubernetes](https://www.youtube.com/watch?v=Twtbg6LFnAg&list=PLyicRj904Z9-L3XdyttvdPwRngIfGa52Y)
 * [Patrick Kennedy](https://www.youtube.com/@ServeTheHomeVideo) (ServeTheHome)
   * [Project TinyMiniMicro](https://www.youtube.com/watch?v=bx4_QCX_khU&list=PLC53fzn9608B-MT5KvuuHct5MiUDO8IF4)
+* [David McKone](https://www.youtube.com/@TechTutorialsDavidMcKone) (Tech Tutorials - David McKone)
+  * [How To Create VLANs in Proxmox For a Single NIC](https://www.youtube.com/watch?v=ljq6wlzn4qo)
 
-I can wholeheartedly und unreservedly recommend them all!
+**I wholeheartedly und unreservedly, recommend you subscribe to them all!**
 
+# Back up your data!
 
-# Back up you data!
-**Don't forget to back up your data!**
+**Now you are self-hosting, you are the system administrator, so don't forget to back up your data!**
 
-**3-2-1 rule - 3 copies, 2 local copies separate devices and 1 offsite**
+Proxmox allows you to configure snapshots and automated backups, configure and use them.
+
+Don't forget the 3-2-1 rule - **Have a minimum of 3 backups, 2 local on separate devices and 1 offsite!**
 
 ---
 [Bill Mair](https://github.com/red-lichtie)

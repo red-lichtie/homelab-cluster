@@ -56,3 +56,5 @@ The HA will change to reflect the new status:
 
 For configuration details see the [turnkey linux documentation](https://www.turnkeylinux.org/gitea) and the
 [gitea documentation](https://docs.gitea.io/en-us/).
+
+It will ask for a strong `admin` password, use a password manager and not something simple like `giteaP455!`. 
