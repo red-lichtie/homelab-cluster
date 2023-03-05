@@ -113,18 +113,6 @@ qm set 9000 --boot order=scsi0
 qm template 9000
 ```
 
-### Create a template to clone from
-
-`[Create VM]` a new VM using `ubuntu-22.10-minimal-cloudimg-amd64.img`, I gave it the number 9000 and called
-it `ubuntu-22.10-cloudimg`.
-
-Configure additional `Hardware`:
-
-+ Add "CloudInit Drive" on `cephblockdevice`
-+ Add "Serial Port" as `serial0`
-
-Convert it to a template.
-
 ### [main.tf](files/terraform/main.tf)
 
 ```terraform
@@ -311,4 +299,35 @@ terraform plan
 Apply the configuration:
 ```shell
 terraform apply
+...
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+proxmox_vm_qemu.k8snode["k8snode-1"]: Creating...
+proxmox_vm_qemu.k8snode["k8snode-2"]: Creating...
+proxmox_vm_qemu.k8snode["k8snode-3"]: Creating...
+proxmox_vm_qemu.k8snode["k8snode-4"]: Creating...
+proxmox_vm_qemu.k8snode["k8snode-5"]: Creating...
+proxmox_vm_qemu.k8snode["k8snode-6"]: Creating...
+
+proxmox_vm_qemu.k8snode["k8snode-1"]: Still creating... [XmXXs elapsed]   # lots of Still creating...
+proxmox_vm_qemu.k8snode["k8snode-2"]: Still creating... [XmXXs elapsed]
+proxmox_vm_qemu.k8snode["k8snode-3"]: Still creating... [XmXXs elapsed]
+proxmox_vm_qemu.k8snode["k8snode-4"]: Still creating... [XmXXs elapsed]
+proxmox_vm_qemu.k8snode["k8snode-5"]: Still creating... [XmXXs elapsed]
+proxmox_vm_qemu.k8snode["k8snode-6"]: Still creating... [XmXXs elapsed]
+
+proxmox_vm_qemu.k8snode["k8snode-1"]: Creation complete after XmXXs [id=pvetest1/qemu/1001]  # Some will complete
+proxmox_vm_qemu.k8snode["k8snode-2"]: Creation complete after XmXXs [id=pvetest2/qemu/1002]
+proxmox_vm_qemu.k8snode["k8snode-3"]: Creation complete after XmXXs [id=pvetest3/qemu/1003]
+proxmox_vm_qemu.k8snode["k8snode-4"]: Creation complete after XmXXs [id=pvetest1/qemu/1004]
+proxmox_vm_qemu.k8snode["k8snode-5"]: Creation complete after XmXXs [id=pvetest2/qemu/1005]
+proxmox_vm_qemu.k8snode["k8snode-6"]: Creation complete after XmXXs [id=pvetest3/qemu/1006]
+
+Apply complete! Resources: 6 added, 0 changed, 0 destroyed.   # All are completed!
 ```
+
+The VMs will be created on the machine where the cloud image exists, it will then be migrated to the target server.
