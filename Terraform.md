@@ -13,15 +13,15 @@ Create a new token for `root@pam`, the `Token ID` (`TerraformToken`) is the name
 
 ![Create token](images/TerraformToken.png "Create token")
 
-You'll the details for the generated token:
+You'll see a dialog with the details of the generated token:
 
 ![Token secret](images/TerraformSecret.png "Token secret")
 <dl>
-<dt>Token ID</dt><dd>`root@pam!TerraformToken`</dd>
-<dt>Secret</dt><dd>`857c73fe-2962-4242-8daa-dc3c485e4e14`</dd>
+<dt>Token ID</dt><dd>root@pam!TerraformToken</dd>
+<dt>Secret</dt><dd>857c73fe-2962-4242-8daa-dc3c485e4e14</dd>
 </dl>
 
-Record the details somewhere, like BitWarden, you'll need the secret for terraform to use the token.
+Record the details somewhere, like BitWarden, you'll need them for terraform to access Proxmox.
 
 # Terraform
 
