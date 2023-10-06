@@ -11,48 +11,54 @@ I use [Mozilla SOPS](https://github.com/mozilla/sops) to manage secrets, they ar
 `tree -a -I .git -I .gitignore --gitignore -d self-hosted`:
 ```text
 self-hosted
-└── kubernetes
-    ├── apps
-    │   ├── namespaces
-    │   │   ├── default
-    │   │   │   ├── rabbitmq
-    │   │   │   └── test-nginx
-    │   │   └── test
-    │   │       └── test-nginx
-    │   └── overlays
-    │       └── prod
-    │           └── secrets
-    ├── clusters
-    │   └── prod
-    │   │   ├── flux-system
-    │   │   │   ├── gotk-components.yaml
-    │   │   │   ├── gotk-sync.yaml
-    │   │   │   └── kustomization.yaml
-    │   │   └── kustomization.yaml
-    ├── infrastructure
-    │   ├── namespaces
-    │   │   ├── cert-manager
-    │   │   │   └── cert-manager
-    │   │   │       ├── app
-    │   │   │       └── prod
-    │   │   │           ├── clusterissuers
-    │   │   │           └── secrets
-    │   │   ├── nfs-provisioner
-    │   │   │   └── nfs-subdir-external-provisioner
-    │   │   │       ├── app
-    │   │   │       └── prod
-    │   │   └── rabbitmq-cluster-operator
-    │   │       └── rabbitmq-cluster-operator
-    │   │           ├── app
-    │   │           └── prod
-    │   └── overlays
-    │       └── prod
-    │           └── secrets
-    ├── repositories
-    │   ├── git
-    │   ├── helm
-    │   ├── oci
-    │   └── s3
-    └── sops
-        └── prod
+├── kubernetes
+│   ├── apps
+│   │   ├── namespaces
+│   │   │   ├── default
+│   │   │   │   ├── rabbitmq
+│   │   │   │   └── test-nginx
+│   │   │   └── test
+│   │   │       └── test-nginx
+│   │   └── overlays
+│   │       └── prod
+│   │           └── secrets
+│   ├── clusters
+│   │   └── prod
+│   │   │   ├── flux-system
+│   │   │   │   ├── gotk-components.yaml
+│   │   │   │   ├── gotk-sync.yaml
+│   │   │   │   └── kustomization.yaml
+│   │   │   └── kustomization.yaml
+│   ├── infrastructure
+│   │   ├── namespaces
+│   │   │   ├── cert-manager
+│   │   │   │   └── cert-manager
+│   │   │   │       ├── app
+│   │   │   │       └── prod
+│   │   │   │           ├── clusterissuers
+│   │   │   │           └── secrets
+│   │   │   ├── nfs-provisioner
+│   │   │   │   └── nfs-subdir-external-provisioner
+│   │   │   │       ├── app
+│   │   │   │       └── prod
+│   │   │   └── rabbitmq-cluster-operator
+│   │   │       └── rabbitmq-cluster-operator
+│   │   │           ├── app
+│   │   │           └── prod
+│   │   └── overlays
+│   │       └── prod
+│   │           └── secrets
+│   ├── repositories
+│   │   ├── git
+│   │   ├── helm
+│   │   ├── oci
+│   │   └── s3
+│   └── sops
+│       ├── prod
+│       │   ├── flux-sops-agekey.yaml
+│       │   ├── kustomization.yaml
+│       │   └── sops-secrets.yaml
+│       └── README.md
+└── .sops.yaml
+
 ```
