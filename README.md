@@ -48,7 +48,7 @@ installing the infrastructure.
 4) [Installing Kubernetes](Kubernetes-Ansible.md) (Ansible)
 5) [Bootstrapping the configuration](Flux.md) (Flux CD, Mozilla SOPS)
 6) [Cluster services](Services.md) (Cert-Manager, admission controller)
-7) [Ingress](Traefik.md) (Traefik)
+7) [Networking and Ingress](Traefik.md) (Traefik, CoreDNS and external-dns)
 8) [Cluster storage](Rook.md) (Rook)
 9) [Cluster monitoring](Monitoring.md) (Prometheus, Loki and Grafana)
 10) [Infrastructure](Infrastructure.md) (Databases, Connectivity, etc.)
