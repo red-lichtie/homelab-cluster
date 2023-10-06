@@ -49,7 +49,9 @@ installing the infrastructure.
 5) [Bootstrapping the configuration](Flux.md) (Flux CD, Mozilla SOPS)
 6) [Cluster services](Services.md) (Cert-Manager, admission controller)
 7) [Networking and Ingress](Traefik.md) (Traefik, CoreDNS and external-dns)
-8) [Cluster storage](Rook.md) (Rook)
+8) Cluster storage
+   1) [Rook](Rook.md)
+   2) [NFS](nfs-subdir-external-provisioner.md)
 9) [Cluster monitoring](Monitoring.md) (Prometheus, Loki and Grafana)
 10) [Infrastructure](Infrastructure.md) (Databases, Connectivity, etc.)
 11) [Applications](Applications.md) (3rd party applications)
