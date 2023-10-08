@@ -61,8 +61,7 @@ spec:
       interval: 60m
   valuesFrom:
     - kind: ConfigMap
-      name: nfs-provisioner-helm-chart-overrides
-      valuesKey: override.yaml
+      name: chart-values-overrides
 ...
 ```
 
@@ -87,10 +86,10 @@ resources:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: nfs-provisioner-helm-chart-overrides
+  name: chart-values-overrides
   namespace: nfs-provisioner
 data:
-  override.yaml: |-
+  values.yaml: |-
     nfs:
       server: nas-t.home-lab.net
       path: /KubernetesProd
