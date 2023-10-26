@@ -9,6 +9,7 @@ spec:
     - kind: Gateway
       name: main-gateway
       namespace: default
+      sectionName: prod-tls-gw
   hostnames:
     - ceph.home.svc
   rules:

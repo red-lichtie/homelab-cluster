@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - certificate.yaml
   - gateway.yaml
-#  - http-filter-redirect.yaml
+  - http-filter-redirect.yaml
   - podinfo.yaml
   - linkding.yaml

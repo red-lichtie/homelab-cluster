@@ -10,6 +10,7 @@ spec:
   parentRefs:
     - name: main-gateway
       namespace: default
+      sectionName: prod-tls-gw
   hostnames:
     - hubble.home.svc
   rules:
