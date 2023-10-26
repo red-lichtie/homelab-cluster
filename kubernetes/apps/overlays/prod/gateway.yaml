@@ -15,10 +15,7 @@ spec:
       hostname: "*.home.svc"
       allowedRoutes:
         namespaces:
-          from: Selector
-          selector:
-            matchLabels:
-              shared-gateway-access: "true"
+          from: All
       tls:
         certificateRefs:
           - kind: Secret
@@ -30,7 +27,4 @@ spec:
       hostname: "*.home.svc"
       allowedRoutes:
         namespaces:
-          from: Selector
-          selector:
-            matchLabels:
-              shared-gateway-access: "true"
+          from: All
