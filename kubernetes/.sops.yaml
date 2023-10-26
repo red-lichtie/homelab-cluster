@@ -1,0 +1,14 @@
+---
+creation_rules:
+  - path_regex: .*.prod.ya?ml
+    encrypted_regex: ^(data|stringData)$
+    # Personal, Flux-Prod
+    age: >-
+      age1wgq6wt4yfnqg8nw7nrd27sc90xllpxwgd9vgj653cns8cmn7230syhkq95,
+      age1jtm9h6g5r9a5rasy6nuaa72zwfx2vfn2wmm6302ju8tsl3l45p4qta2d32
+  - path_regex: .*.test.ya?ml
+    encrypted_regex: ^(data|stringData)$
+    # Personal(, Flux-Test)
+    age: >-
+      age1wgq6wt4yfnqg8nw7nrd27sc90xllpxwgd9vgj653cns8cmn7230syhkq95
+...

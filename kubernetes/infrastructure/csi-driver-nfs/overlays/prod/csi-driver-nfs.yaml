@@ -1,0 +1,18 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: infrastructure-csi-driver-nfs
+  namespace: flux-system
+spec:
+  interval: 24h
+  path: kubernetes/infrastructure/csi-driver-nfs/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  decryption:
+    provider: sops
+    secretRef:
+      name: flux-sops-agekey
+...

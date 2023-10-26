@@ -1,0 +1,126 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: etc-bind
+  namespace: clusterdns
+data:
+  named.conf: |-
+    // Managing acls
+    acl internals {
+      127.0.0.0/8;
+      10.0.0.0/8;
+      172.16.0.0/12;
+      192.168.0.0/16;
+    };
+    
+    // Load options
+    include "/etc/bind/named.conf.options";
+    
+    // TSIG key used for the dynamic update
+    include "/etc/bind/rndc.key";
+
+    // Configure the communication channel for Administrative BIND9 with rndc
+    // By default, they key is in the rndc.key file and is used by rndc and bind9
+    // on the localhost
+    
+    // controls {
+    //   inet ( <ipv4_address> | <ipv6_address> | * ) [ port ( <integer> | * ) ] allow { <address_match_element>; ... } [ keys { <string>; ... } ] [ read-only <boolean> ]; // may occur multiple times
+    //   unix <quoted_string> perm <integer> owner <integer> group <integer> [ keys { <string>; ... } ] [ read-only <boolean> ]; // may occur multiple times
+    // };
+    
+    controls {
+      inet * port 53 allow { 10.0.0.0/8; };
+    };
+  
+    // controls {
+    //   inet 127.0.0.1 port 953 allow { 127.0.0.1; };
+    // };
+    
+    include "/etc/bind/named.conf.default-zones";
+    include "/etc/bind/named.conf.local";
+
+  named.conf.default-zones: |-
+    // be authoritative for the localhost forward and reverse zones, and for
+    // broadcast zones as per RFC 1912
+    zone "localhost" {
+      type master;
+      file "/etc/bind/db.local";
+    };
+    zone "127.in-addr.arpa" {
+      type master;
+      file "/etc/bind/db.127";
+    };
+    zone "0.in-addr.arpa" {
+      type master;
+      file "/etc/bind/db.0";
+    };
+    zone "255.in-addr.arpa" {
+      type master;
+      file "/etc/bind/db.255";
+    };  
+
+  named.conf.options: |-
+    options {
+      directory "/var/cache/bind";
+    
+      // Exchange port between DNS servers
+      query-source address * port *;
+
+      auth-nxdomain no;    # conform to RFC1035
+    
+      // From 9.9.5 ARM, disables interfaces scanning to prevent unwanted stop listening
+      interface-interval 0;
+
+      // Listen on local interfaces only(IPV4)
+      listen-on-v6 {
+        none;
+      };
+      listen-on {
+        any;
+      };
+    
+      allow-transfer { 10.0.0.0/8; 172.16.0.0/12; 192.168.0.0/16; };
+    
+      // Accept requests for internal network only
+      allow-query {
+        internals;
+      };
+    
+      // Allow recursive queries to the local hosts
+      allow-recursion {
+        internals;
+      };
+    
+      // Do not make public version of BIND
+      version none;
+    };
+
+  named.conf.local: |-
+    include "/etc/bind/named.conf.log";
+
+    zone "home.svc" {
+      type master;
+      file "/var/lib/bind/db.home.svc";
+      allow-update { key rndc-key; };
+    };
+    zone "0.168.192.in-addr.arpa" {
+      type master;
+      file "/var/lib/bind/db.home.svc.inv";
+      allow-update { key rndc-key; };
+    };
+
+  named.conf.log: |-
+    logging{
+      channel stderr_log {
+        stderr;
+        severity info;
+        print-time yes;
+        print-severity yes;
+        print-category yes;
+      };
+      category default{
+        stderr_log;
+      };
+    };
+...

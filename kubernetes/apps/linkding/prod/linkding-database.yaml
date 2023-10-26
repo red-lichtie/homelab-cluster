@@ -1,0 +1,18 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-linkding-database
+  namespace: flux-system
+spec:
+  interval: 24h
+  path: kubernetes/apps/linkding/prod/database
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  decryption:
+    provider: sops
+    secretRef:
+      name: flux-sops-agekey
+...

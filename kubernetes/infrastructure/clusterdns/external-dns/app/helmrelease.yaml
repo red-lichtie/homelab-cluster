@@ -1,0 +1,29 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: clusterdns
+spec:
+  targetNamespace: clusterdns
+  releaseName: external-dns
+  interval: 30m
+  chart:
+    spec:
+      chart: external-dns
+      version: 6.26.4
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+      interval: 30m
+
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
+
+  valuesFrom:
+    - kind: ConfigMap
+      name: external-dns-helm-chart-overrides
+...

@@ -1,0 +1,20 @@
+---
+# namespace: redis has to be created manually
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: mariadb-operator
+  namespace: database-operators
+spec:
+  targetNamespace: database-operators
+  releaseName: mariadb-operator
+  chart:
+    spec:
+      chart: mariadb-operator
+      version: 0.22.0
+      sourceRef:
+        kind: HelmRepository
+        name: mariadb-operator
+        namespace: flux-system
+  interval: 60m
+...

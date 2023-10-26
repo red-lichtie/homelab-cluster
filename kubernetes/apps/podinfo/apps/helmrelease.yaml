@@ -1,0 +1,41 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: podinfo
+  namespace: default
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: podinfo
+      version: 6.5.2
+      sourceRef:
+        kind: HelmRepository
+        name: podinfo
+        namespace: flux-system
+      interval: 1m
+  values:
+    replicaCount: 3
+    ingress:
+      enabled: false
+#      annotations:
+#        cert-manager.io/cluster-issuer: themairs-production-ca-2022
+#        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+#        traefik.ingress.kubernetes.io/router.tls: "true"
+      hosts:
+        - host: podinfo.home.svc
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - hosts:
+            - podinfo.home.svc
+          secretName: podinfo-cert
+    foo: value1
+    bar:
+    baz: value2
+    oof:
+      - item1
+      - item2
+...

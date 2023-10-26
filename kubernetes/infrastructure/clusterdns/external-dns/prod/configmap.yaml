@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: external-dns-helm-chart-overrides
+  namespace: clusterdns
+data:
+  values.yaml: |
+    policy: sync
+    provider: rfc2136
+    rfc2136:
+      host: "bind9.clusterdns.svc.cluster.local"
+      zone: "home.svc"
+      secretName: "rfc2136-tsig-secrets"
+      tsigKeyname: "rndc-key"
+      minTTL: "5s"
+    sources:
+      - gateway-httproute
+      - gateway-tlsroute
+    #  - gateway-grpcroute
+    #  - gateway-tcproute
+    #  - gateway-udproute

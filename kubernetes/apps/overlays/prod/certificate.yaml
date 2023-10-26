@@ -1,0 +1,17 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: main-gateway
+  namespace: default
+spec:
+  secretName: main-gateway
+  dnsNames:
+    - "*.home.svc"
+  usages:
+    - digital signature
+    - key encipherment
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: themairs-production-ca-2022

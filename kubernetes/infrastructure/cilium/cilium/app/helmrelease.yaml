@@ -1,0 +1,31 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cilium
+  namespace: kube-system
+spec:
+  releaseName: cilium
+  targetNamespace: kube-system
+  interval: 5m
+
+  install:
+    crds: CreateReplace
+
+  upgrade:
+    crds: CreateReplace
+
+  chart:
+    spec:
+      chart: cilium
+      version: 1.14.3
+      sourceRef:
+        kind: HelmRepository
+        name: cilium
+        namespace: flux-system
+      interval: 60m
+
+  valuesFrom:
+    - kind: ConfigMap
+      name: cilium-helm-values-override
+

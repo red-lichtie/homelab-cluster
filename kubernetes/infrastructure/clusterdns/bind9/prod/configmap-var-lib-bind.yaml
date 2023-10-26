@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: var-lib-bind
+  namespace: clusterdns
+data:
+  db.home.svc : |-
+    $TTL    3600
+    @       IN      SOA     bind9.home.svc. root.home.svc. (
+    2007010401           ; Serial
+    3600           ; Refresh [1h]
+    600           ; Retry   [10m]
+    86400           ; Expire  [1d]
+    600 )         ; Negative Cache TTL [1h]
+    ;
+    @       IN      NS      bind9.home.svc.
+    
+    bind9   IN      A       192.168.76.226
+    
+    ns      IN      CNAME   bind9
+    
+    mqtt    IN      CNAME   traefik
+    amqp    IN      CNAME   traefik
+
+  db.home.svc.inv : |-
+    @       IN      SOA     bind9.home.svc. root.home.svc. (
+    2007010401           ; Serial
+    3600           ; Refresh [1h]
+    600           ; Retry   [10m]
+    86400           ; Expire  [1d]
+    600 )         ; Negative Cache TTL [1h]
+    ;
+    @       IN      NS      bind9.home.svc.
+    
+    226     IN      PTR     bind9.home.svc.
+    
+
+...

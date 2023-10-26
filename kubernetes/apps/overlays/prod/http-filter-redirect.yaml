@@ -1,0 +1,19 @@
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: http-filter-redirect
+  namespace: default
+spec:
+  parentRefs:
+    - kind: Gateway
+      name: main-gateway
+      namespace: default
+  hostnames:
+    - podinfo.home.svc
+  rules:
+    - filters:
+        - type: RequestRedirect
+          requestRedirect:
+            scheme: https
+            statusCode: 301

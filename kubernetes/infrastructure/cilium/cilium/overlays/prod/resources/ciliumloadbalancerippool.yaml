@@ -1,0 +1,10 @@
+---
+apiVersion: cilium.io/v2alpha1
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: production
+  namespace: kube-system
+spec:
+  cidrs:
+    - cidr: 192.168.76.224/29
+

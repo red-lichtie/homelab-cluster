@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: disk-wipe-a2-sdb
+  namespace: rook-ceph
+spec:
+  restartPolicy: Never
+  nodeName: talos-a2
+  containers:
+    - name: disk-wipe
+      image: busybox
+      securityContext:
+        privileged: true
+      command: ["/bin/sh", "-c", "dd if=/dev/zero bs=1M count=100 oflag=direct of=/dev/sdb"]

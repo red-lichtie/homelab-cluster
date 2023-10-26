@@ -1,0 +1,76 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bind9
+  namespace: clusterdns
+  annotations:
+    some: thing
+spec:
+  selector:
+    matchLabels:
+      app: bind9
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: bind9
+    spec:
+      containers:
+        - name: bind9
+          image: ubuntu/bind9:9.16-20.04_edge
+          ports:
+            - name: dns-udp
+              protocol: UDP
+              containerPort: 53
+            - name: dns-tcp
+              protocol: TCP
+              containerPort: 53
+          resources:
+            requests:
+              memory: 5Mi
+              cpu: 10m
+            limits:
+              memory: 128Mi
+              cpu: 500m
+          volumeMounts:
+            - name: etc-bind
+              mountPath: /etc/bind/named.conf
+              subPath: named.conf
+            - name: etc-bind
+              mountPath: /etc/bind/named.conf.default-zones
+              subPath: named.conf.default-zones
+            - name: etc-bind
+              mountPath: /etc/bind/named.conf.options
+              subPath: named.conf.options
+            - name: etc-bind
+              mountPath: /etc/bind/named.conf.local
+              subPath: named.conf.local
+            - name: etc-bind
+              mountPath: /etc/bind/named.conf.log
+              subPath: named.conf.log
+            - name: var-lib-bind
+              mountPath: /var/lib/bind/db.home.svc
+              subPath: db.home.svc
+            - name: var-lib-bind
+              mountPath: /var/lib/bind/db.home.svc.inv
+              subPath: db.home.svc.inv
+            - name: etc-bind-keys
+              mountPath: /etc/bind/rndc.key
+              subPath: rndc-key
+            - name: var-cache-bind
+              mountPath: /var/cache/bind
+      volumes:
+        - name: etc-bind
+          configMap:
+            name: etc-bind
+        - name: var-lib-bind
+          configMap:
+            name: var-lib-bind
+        - name: etc-bind-keys
+          secret:
+            secretName: etc-bind-keys
+
+        - name: var-cache-bind
+          emptyDir: {}
+...

@@ -1,0 +1,9 @@
+---
+machine:
+  network:
+    interfaces:
+    - interface: eth0
+      dhcp: true
+      vip:
+        ip: 192.168.76.230
+
