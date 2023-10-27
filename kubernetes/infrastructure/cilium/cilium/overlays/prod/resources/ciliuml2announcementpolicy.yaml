@@ -9,7 +9,10 @@ spec:
   # NOTE: This might need to be set if you have more than one active NIC on your nodes
   # interfaces:
   #   - ^eno[0-9]+
+  #   - ^eth[0-9]+
   nodeSelector:
     matchLabels:
       kubernetes.io/os: linux
-
+    matchExpressions:
+      - key: node-role.kubernetes.io/control-plane
+        operator: DoesNotExist
