@@ -23,4 +23,7 @@ spec:
         name: rook-release
         namespace: flux-system
       interval: 60m
+
+  values:
+    enableDiscoveryDaemon: true
 ...
