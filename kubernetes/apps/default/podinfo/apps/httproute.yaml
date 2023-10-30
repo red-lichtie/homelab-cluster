@@ -7,9 +7,9 @@ metadata:
 spec:
   parentRefs:
     - kind: Gateway
-      name: main-gateway
+      name: podinfo-gateway
       namespace: default
-      sectionName: prod-tls-gw
+      sectionName: podinfo-tls-gw
   hostnames:
     - podinfo.home.svc
   rules:

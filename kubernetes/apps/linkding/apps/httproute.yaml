@@ -7,9 +7,8 @@ metadata:
 spec:
   parentRefs:
     - kind: Gateway
-      name: main-gateway
-      namespace: default
-      sectionName: prod-tls-gw
+      name: linkding-gateway
+      namespace: linkding
   hostnames:
     - linkding.home.svc
   rules:

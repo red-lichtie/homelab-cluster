@@ -2,12 +2,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: main-gateway
+  name: podinfo-gateway
   namespace: default
 spec:
-  secretName: main-gateway
+  secretName: podinfo-gateway
+  commonName: podinfo.home.svc
   dnsNames:
-    - "*.home.svc"
+    - "podinfo.home.svc"
   usages:
     - digital signature
     - key encipherment

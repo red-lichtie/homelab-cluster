@@ -1,0 +1,20 @@
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+  name: cilium-gateway
+  namespace: kube-system
+spec:
+  gatewayClassName: cilium
+  listeners:
+    - protocol: HTTPS
+      port: 443
+      name: cilium-ui-tls-gw
+      hostname: "hubble.home.svc"
+      allowedRoutes:
+        namespaces:
+          from: Same
+      tls:
+        certificateRefs:
+          - kind: Secret
+            name: cilium-gateway

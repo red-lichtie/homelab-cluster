@@ -2,15 +2,14 @@
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: HTTPRoute
 metadata:
-  name: hubble
+  name: cilium-gateway
   namespace: kube-system
-  labels:
-    test: it
 spec:
   parentRefs:
-    - name: main-gateway
-      namespace: default
-      sectionName: prod-tls-gw
+    - kind: Gateway
+      name: cilium-gateway
+      namespace: kube-system
+      sectionName: cilium-ui-tls-gw
   hostnames:
     - hubble.home.svc
   rules:

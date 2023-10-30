@@ -6,5 +6,17 @@ metadata:
   namespace: kube-system
 spec:
   cidrs:
+    - cidr: 192.168.77.0/26
+---
+apiVersion: cilium.io/v2alpha1
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: static
+  namespace: kube-system
+spec:
+  cidrs:
     - cidr: 192.168.76.224/29
+  serviceSelector:
+    matchLabels:
+      "io.kubernetes.service.namespace": "clusterdns"
 

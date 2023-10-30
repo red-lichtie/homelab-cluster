@@ -15,13 +15,8 @@ data:
     600 )         ; Negative Cache TTL [1h]
     ;
     @       IN      NS      bind9.home.svc.
-    
     bind9   IN      A       192.168.76.226
-    
     ns      IN      CNAME   bind9
-    
-    mqtt    IN      CNAME   traefik
-    amqp    IN      CNAME   traefik
 
   db.home.svc.inv : |-
     @       IN      SOA     bind9.home.svc. root.home.svc. (
@@ -32,8 +27,6 @@ data:
     600 )         ; Negative Cache TTL [1h]
     ;
     @       IN      NS      bind9.home.svc.
-    
     226     IN      PTR     bind9.home.svc.
-    
 
 ...

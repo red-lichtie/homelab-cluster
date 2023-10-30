@@ -2,29 +2,26 @@
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
-  name: main-gateway
+  name: podinfo-gateway
   namespace: default
 spec:
   gatewayClassName: cilium
-  addresses:
-    - value: 192.168.76.225
   listeners:
     - protocol: HTTPS
       port: 443
-      name: prod-tls-gw
-      hostname: "*.home.svc"
+      name: podinfo-tls-gw
+      hostname: "podinfo.home.svc"
       allowedRoutes:
         namespaces:
           from: All
       tls:
         certificateRefs:
           - kind: Secret
-            group: ""
             name: main-gateway
     - protocol: HTTP
       port: 80
-      name: prod-web-gw
-      hostname: "*.home.svc"
+      name: podinfo-web-gw
+      hostname: "podinfo.home.svc"
       allowedRoutes:
         namespaces:
           from: All

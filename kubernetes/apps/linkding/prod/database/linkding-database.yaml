@@ -9,13 +9,58 @@ spec:
   primaryUpdateStrategy: unsupervised
   storage:
     size: 1Gi
+    storageClass: ceph-block
+    pvcTemplate:
+      accessModes:
+        - ReadWriteOnce
 
   superuserSecret:
     name: postgres-superuser
 
+#  bootstrap:
+#    initdb:
+#      database: linkding
+#      owner: linkding
+#      secret:
+#        name: linkding
   bootstrap:
-    initdb:
+    recovery:
+      source: linkding-database
       database: linkding
       owner: linkding
       secret:
         name: linkding
+
+  externalClusters:
+    - name: linkding-database
+      barmanObjectStore:
+        destinationPath: "s3://CloudNativePG"
+        endpointURL: "https://nas1.net.themairs.net:8010"
+        endpointCA:
+          name: s3-credentials
+          key: tls.crt
+        s3Credentials:
+          accessKeyId:
+            name: s3-credentials
+            key: key
+          secretAccessKey:
+            name: s3-credentials
+            key: secret
+        wal:
+          maxParallel: 8
+
+#  backup:
+#    retentionPolicy: "30d"
+#    barmanObjectStore:
+#      endpointCA:
+#        name: s3-credentials
+#        key: tls.crt
+#      destinationPath: "s3://CloudNativePG"
+#      endpointURL: "https://nas1.net.themairs.net:8010"
+#      s3Credentials:
+#        accessKeyId:
+#          name: s3-credentials
+#          key: key
+#        secretAccessKey:
+#          name: s3-credentials
+#          key: secret

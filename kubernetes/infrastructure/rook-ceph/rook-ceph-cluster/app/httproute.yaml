@@ -7,13 +7,13 @@ metadata:
 spec:
   parentRefs:
     - kind: Gateway
-      name: main-gateway
-      namespace: default
-      sectionName: prod-tls-gw
+      name: ceph-gateway
+      namespace: rook-ceph
+      sectionName: ceph-tls-gw
   hostnames:
     - ceph.home.svc
   rules:
     - backendRefs:
         - name: rook-ceph-mgr-dashboard
+          namespace: rook-ceph
           port: 7000
-...

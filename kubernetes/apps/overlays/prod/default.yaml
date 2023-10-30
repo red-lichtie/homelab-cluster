@@ -2,11 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: apps-overlays-podinfo
+  name: apps-overlays-default
   namespace: flux-system
 spec:
   interval: 24h
-  path: kubernetes/apps/podinfo/prod
+  path: kubernetes/apps/default/overlays/prod
   prune: true
   sourceRef:
     kind: GitRepository

@@ -1,0 +1,11 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  name: linkding-database
+  namespace: linkding
+spec:
+  schedule: "0 0 0 * * *"
+  backupOwnerReference: cluster
+  cluster:
+    name: linkding-database
