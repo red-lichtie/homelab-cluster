@@ -11,12 +11,10 @@ I am not responsible for anything that happens to you, your property and especia
 
 ![Cluster image](docs/images/Proxmox-Cluster.png "The cluster")
 
-**I am assuming that anyone attempting this has a good level of technical knowledge, so I'll only be
+> **IMPORTANT!**
+>
+> **I am assuming that anyone attempting this kind of cluster, has a good level of technical knowledge, so I'll only be
 detailing information relevant to the pitfalls I encountered getting the cluster up and running.**
-
-# Hardware
-
-I am using [3 old small form factor office PCs](docs/Hardware.md) for the cluster.
 
 # Software
 

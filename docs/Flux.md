@@ -38,7 +38,7 @@ This should be the only time you'll need `kubectl` and that is to install a secr
 process your secrets.
 
 ```shell
-sops --decrypt --encrypted-regex '^(data|stringData)$' kubernetes/sops/prod/flux-sops-agekey.prod.yaml | kubectl apply -f -
+sops --decrypt kubernetes/sops/prod/flux-sops-agekey.prod.yaml | kubectl apply -f -
 ```
 
 ### update flux configuration to use the secret
@@ -63,25 +63,35 @@ spec:
     provider: sops
     secretRef:
       name: flux-sops-agekey
+...
 ```
 
 ## Repository structure
 
 `tree -a -I .git -I .gitignore --gitignore -d kubernetes`:
 ```text
-kubernetes/
+kubernetes
 ├── apps
+│   ├── default
+│   │   ├── overlays
+│   │   │   └── prod
+│   │   └── podinfo
+│   │       ├── base
+│   │       └── overlays
+│   │           ├── prod
+│   │           └── test
 │   ├── linkding
-│   │   ├── apps
-│   │   └── prod
-│   │       └── database
-│   ├── overlays
-│   │   └── prod
-│   └── podinfo
-│       ├── apps
-│       └── prod
+│   │   ├── base
+│   │   └── overlays
+│   │       └── prod
+│   │           └── database
+│   └── overlays
+│       ├── prod
+│       └── test
 ├── clusters
-│   └── prod
+│   ├── prod
+│   │   └── flux-system
+│   └── test
 │       └── flux-system
 ├── infrastructure
 │   ├── cert-manager
@@ -91,14 +101,6 @@ kubernetes/
 │   │   └── overlays
 │   │       └── prod
 │   │           └── resources
-│   ├── cilium
-│   │   ├── cilium
-│   │   │   ├── app
-│   │   │   └── overlays
-│   │   │       └── prod
-│   │   │           └── resources
-│   │   └── overlays
-│   │       └── prod
 │   ├── clusterdns
 │   │   ├── bind9
 │   │   │   ├── app
@@ -113,13 +115,39 @@ kubernetes/
 │   │   └── overlays
 │   │       └── prod
 │   │           └── storageclasses
+│   ├── database
+│   │   ├── overlays
+│   │   │   └── prod
+│   │   └── redis-cluster
+│   │       ├── app
+│   │       └── prod
 │   ├── database-operators
 │   │   ├── cloudnative-pg
+│   │   ├── crunchydata-pgo
 │   │   ├── mariadb-operator
 │   │   └── overlays
 │   │       └── prod
+│   ├── messaging
+│   │   ├── overlays
+│   │   │   └── prod
+│   │   ├── rabbitmq
+│   │   │   └── app
+│   │   └── rabbitmq-cluster-operator
+│   ├── network
+│   │   ├── ingress-nginx
+│   │   │   ├── app
+│   │   │   └── overlays
+│   │   │       └── prod
+│   │   ├── metallb
+│   │   │   ├── app
+│   │   │   └── overlays
+│   │   │       └── prod
+│   │   │           └── resources
+│   │   └── overlays
+│   │       └── prod
 │   ├── overlays
-│   │   └── prod
+│   │   ├── prod
+│   │   └── test
 │   └── rook-ceph
 │       ├── overlays
 │       │   └── prod
@@ -135,5 +163,6 @@ kubernetes/
 │   ├── oci
 │   └── s3
 └── sops
-    └── prod
+    ├── prod
+    └── test
 ```
